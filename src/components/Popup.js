@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { checkWin } from "../helpers/helpers";
 import { useNavigate } from "react-router-dom";
 
-
 const Popup = ({
   correctLetters,
   wrongLetters,
@@ -11,17 +10,19 @@ const Popup = ({
   playAgain,
   sendHighscore,
   getHighscore,
-  setEndTime
+  setEndTime,
 }) => {
-  const [finalMessage, setFinalMessage] = useState("")
+  const [finalMessage, setFinalMessage] = useState("");
 
   useEffect(() => {
     let playable = true;
     if (checkWin(correctLetters, wrongLetters, selectedWord) === "win") {
       setFinalMessage("Congratulations! You won!");
       playable = false;
-      setEndTime(Date.now())
-    } else if (checkWin(correctLetters, wrongLetters, selectedWord) === "lose") {
+      setEndTime(Date.now());
+    } else if (
+      checkWin(correctLetters, wrongLetters, selectedWord) === "lose"
+    ) {
       setFinalMessage("Unfortunately you lost.");
       playable = false;
     }
@@ -38,11 +39,23 @@ const Popup = ({
     >
       <div className="popup">
         <h2>{finalMessage}</h2>
-        <button className="button-margin" onClick={() => {
-          playAgain()
-          setFinalMessage("")
-        }}>Play Again</button>
-        <button onClick={() => { sendHighscore(); navigate("/highscores"); }}>Submit score</button>
+        <button
+          className="button-margin"
+          onClick={() => {
+            playAgain();
+            setFinalMessage("");
+          }}
+        >
+          Play Again
+        </button>
+        <button
+          onClick={() => {
+            sendHighscore();
+            navigate("/highscores");
+          }}
+        >
+          Submit score
+        </button>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 // rafce
 const Header = () => {
@@ -7,7 +7,7 @@ const Header = () => {
       <h1>Hangman</h1>
       <p>Find the hidden quote :)</p>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

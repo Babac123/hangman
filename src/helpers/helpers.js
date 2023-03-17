@@ -1,28 +1,26 @@
-
 export function checkWin(correct, wrong, word) {
-  let status = 'win';
+  let status = "win";
 
   // Check for win
-  word.split('').forEach(letter => {
-    if (letter === ".") return
-    if (letter === ",") return
-    if (letter === "!") return
-    if (letter === "?") return
-    if (letter === "-") return
-    if (letter === ";") return
-    if (letter === "'") return
-    if (letter === ":") return
-    if (letter === "...") return
-    if (letter === " ") return
-
+  word.split("").forEach((letter) => {
+    if (letter === ".") return;
+    if (letter === ",") return;
+    if (letter === "!") return;
+    if (letter === "?") return;
+    if (letter === "-") return;
+    if (letter === ";") return;
+    if (letter === "'") return;
+    if (letter === ":") return;
+    if (letter === "...") return;
+    if (letter === " ") return;
 
     if (!correct.includes(letter)) {
-      status = '';
+      status = "";
     }
   });
 
   // Check for lose
-  if (wrong.length === 6) status = 'lose';
+  if (wrong.length === 6) status = "lose";
 
-  return status
+  return status;
 }

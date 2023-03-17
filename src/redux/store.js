@@ -3,4 +3,4 @@ import AppReducer from "./reducers/appReducer";
 
 const store = createStore(AppReducer);
 
-export default store
+export default store;

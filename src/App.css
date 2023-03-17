@@ -12,14 +12,13 @@ body,
   align-items: center;
   height: 100vh;
   margin: 0;
-  
 }
 
 h1 {
   margin: 20px 0 0;
 }
 
-.margin-bot{
+.margin-bot {
   margin-bottom: 20px;
 }
 
@@ -149,6 +148,6 @@ h1 {
   margin-bottom: 50px;
 }
 
-.button-margin{
+.button-margin {
   margin-right: 10px;
 }

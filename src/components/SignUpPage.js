@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 
-
 import "../App.css";
 
 import { useDispatch } from "react-redux";
 import { saveUser } from "../redux/actions/appActions";
 
-
-import {
-  BrowserRouter as Router,
-  useNavigate
-} from "react-router-dom";
+import { BrowserRouter as Router, useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const dispatch = useDispatch();
@@ -20,7 +15,7 @@ export default function Signup() {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    console.log(name)
+    console.log(name);
     dispatch(saveUser(name));
     navigate("/main");
   };

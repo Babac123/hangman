@@ -6,21 +6,14 @@ import Word from "./components/Word";
 import Popup from "./components/Popup";
 import store from "./redux/store";
 
-import Signup from "./components/SignUpPage"
-import Main from "./components/MainPage"
+import Signup from "./components/SignUpPage";
+import Main from "./components/MainPage";
 import Highscores from "./components/HighscoresPage";
 
 import "./App.css";
 import { Provider } from "react-redux";
 
-
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  
-} from "react-router-dom";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default function App() {
   return (
