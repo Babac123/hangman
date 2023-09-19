@@ -9,7 +9,6 @@ const Popup = ({
   setPlayable,
   playAgain,
   sendHighscore,
-  getHighscore,
   setEndTime,
 }) => {
   const [finalMessage, setFinalMessage] = useState("");

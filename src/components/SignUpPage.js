@@ -24,27 +24,26 @@ export default function Signup() {
     setName(text);
   };
   return (
-    <div className="container margin-top">
-      <div className="LoginBox">
+    <div className="container center padding">
+      <div className="form__group field">
         <form onSubmit={handleSubmitForm}>
-          <text>Please enter your username</text>
+          <br></br>
+          <br></br>
           <input
+            class="form__field"
             type="text"
             name="name"
             value={name}
             onChange={(e) => handleChangeName(e.target.value)}
-            placeholder="Username"
+            placeholder="name"
+            id="name"
           />
+          <label for="name" class="form__label">
+            Username
+          </label>
           <div className="button">
-            <button
-              type="submit"
-              style={{
-                backgroundColor: name ? "grey" : "#cccccc",
-                color: name ? "white" : "black",
-              }}
-              disabled={!name}
-            >
-              ENTER
+            <button type="submit" disabled={!name} className="button-6">
+              Enter
             </button>
           </div>
         </form>

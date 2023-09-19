@@ -6,22 +6,23 @@ import Word from "./Word";
 import Popup from "./Popup";
 import "../App.css";
 
+import app from "../config/firebase";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+
 import axios from "axios";
 
 import { useSelector } from "react-redux";
 
-import { BrowserRouter as Router } from "react-router-dom";
-
 export default function Main() {
   const [playable, setPlayable] = useState(true);
-  const [startTime, setStartTime] = useState(null);
-  const [endTime, setEndTime] = useState(null);
+  const [startTime, setStartTime] = useState();
+  const [endTime, setEndTime] = useState();
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
   const [newQuote, setNewQuote] = useState(null);
-  const [newQuoteId, setNewQuoteId] = useState(null);
 
   const user = useSelector((state) => state.user);
+  const db = getFirestore(app);
 
   useEffect(() => {
     !newQuote && getNewQuote();
@@ -33,7 +34,6 @@ export default function Main() {
     axios.get("https://api.quotable.io/random").then((response) => {
       console.log(response.data);
       setNewQuote(response.data.content.toLowerCase());
-      setNewQuoteId(response.data._id);
       setStartTime(Date.now());
     });
   };
@@ -58,28 +58,16 @@ export default function Main() {
     return str;
   };
 
-  const submitHighscore = async () => {
-    const duration = endTime - startTime;
-    const unique = findUnique(newQuote);
-
-    console.log("Unique>", unique.size);
-
-    axios
-      .post(
-        "https://my-json-server.typicode.com/Serapion-ZG/hangman-ts/highscores",
-
-        {
-          quoteId: newQuoteId,
-          length: newQuote.length,
-          userName: user,
-          errors: wrongLetters.length,
-          duration: duration,
-          uniqueCharacters: unique.size,
-        }
-      )
-      .then((response) => {
-        console.log("response", response);
+  const submitHighscore = async (name, score) => {
+    try {
+      const docRef = await addDoc(collection(db, "highscores"), {
+        name,
+        score,
       });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   };
 
   useEffect(() => {
@@ -116,7 +104,7 @@ export default function Main() {
   }
 
   function sendHighscore() {
-    submitHighscore();
+    submitHighscore(user, endTime - startTime);
   }
 
   return (

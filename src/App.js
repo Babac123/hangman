@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from "react";
-import Header from "./components/Header";
-import Figure from "./components/Figure";
-import WrongLetters from "./components/WrongLetters";
-import Word from "./components/Word";
-import Popup from "./components/Popup";
+import React from "react";
 import store from "./redux/store";
 
 import Signup from "./components/SignUpPage";
 import Main from "./components/MainPage";
-import Highscores from "./components/HighscoresPage";
+import Highscores from "./components/HighscorePage";
 
 import "./App.css";
 import { Provider } from "react-redux";
