@@ -3,7 +3,8 @@
 }
 
 body {
-  background: grey;
+  background: 	#1B1B1B
+  ;
 }
 #root {
   color: #fff;
@@ -266,4 +267,14 @@ h1 {
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
+}
+
+
+
+.orderedList{
+  padding: 10px;
+}
+
+.orderedListItems{
+  padding: 10px;
 }

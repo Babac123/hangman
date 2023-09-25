@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import app from "../config/firebase";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 import Header from "./Header";
+import { useNavigate } from "react-router-dom";
 
 export default function Highscores() {
   const [highscores, setHighscores] = useState([]);
@@ -23,18 +24,26 @@ export default function Highscores() {
     fetchHighscores().then((data) => setHighscores(data));
   }, []);
 
+  const navigate = useNavigate();
+
+
   return (
     <>
       <h2>Highscores</h2>
-      <ul>
+      <ol className="orderedList">
         {highscores
-          .sort((a, b) => a.score - b.score)
+          .sort((a, b) => (a.score - b.score))
           .map((data, idx) => (
-            <li key={idx}>
-              {data.name} - {data.score}
+            <li className="orderedListItems" key={idx}>
+              {data.name} - {data.score} s
             </li>
           ))}
-      </ul>
+      </ol>
+      <button className="button-margin"
+        onClick={() => {
+          navigate("/");
+        }}
+      >Play Again</button>
     </>
   );
 }

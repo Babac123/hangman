@@ -5,7 +5,7 @@ import "../App.css";
 import { useDispatch } from "react-redux";
 import { saveUser } from "../redux/actions/appActions";
 
-import { BrowserRouter as Router, useNavigate } from "react-router-dom";
+import { BrowserRouter as router, useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const dispatch = useDispatch();

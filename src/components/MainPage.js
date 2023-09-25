@@ -38,25 +38,7 @@ export default function Main() {
     });
   };
 
-  const findUnique = (str) => {
-    // Split the string to make array
-    str.split("").forEach((letter) => {
-      if (letter === ".") return;
-      if (letter === ",") return;
-      if (letter === "!") return;
-      if (letter === "?") return;
-      if (letter === "-") return;
-      if (letter === ";") return;
-      if (letter === "'") return;
-      if (letter === ":") return;
-      if (letter === "...") return;
-      if (letter === " ") return;
-      return letter;
-    });
-    // Create a set using array
-    str = new Set(str);
-    return str;
-  };
+
 
   const submitHighscore = async (name, score) => {
     try {
@@ -104,7 +86,7 @@ export default function Main() {
   }
 
   function sendHighscore() {
-    submitHighscore(user, endTime - startTime);
+    submitHighscore(user, (endTime - startTime)/1000);
   }
 
   return (
